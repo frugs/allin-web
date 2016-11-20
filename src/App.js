@@ -56,7 +56,7 @@ class App extends Component {
                   let lowerCaseRace = race.toLowerCase()
                   let battleTagName = battle_tag.split("#", 2)[0]
 
-                   return <tr className="App-leaderboard-data-row" key={battle_tag}>
+                   return <tr className="App-leaderboard-data-row" key={battle_tag + race}>
                      <td className={`App-leaderboard-data-cell-left-${lowerCaseRace}`}>{battleTagName}</td>
                      <td className={`App-leaderboard-data-cell-centre-${lowerCaseRace}`}>
                        <img className="App-leaderboard-race-icon" src={`/images/${race}Icon.png`} alt={race}/>
