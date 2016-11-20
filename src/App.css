@@ -1,0 +1,170 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-break {
+  height: 50px;
+}
+
+.App-leaderboard {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  padding: 1em;
+  line-height: 2em;
+  color: #fff;
+}
+
+.App-leaderboard {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.App-leaderboard-column-1 {
+  width: 65%;
+}
+
+.App-leaderboard-column-2 {
+  width: 15%;
+}
+
+.App-leaderboard-column-3 {
+  width: 15%;
+}
+
+.App-leaderboard-column-4 {
+  width: 15%;
+}
+
+.App-leaderboard-header-row {
+  text-align: center;
+  height: 2.2em;
+}
+
+.App-leaderboard-header-cell {
+  border-radius: 0.5em;
+  background: #32343f;
+}
+
+.App-leaderboard-data-row {
+  height: 2em;
+}
+
+.App-leaderboard-data-cell {
+  border-radius: 0.5em;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.App-leaderboard-data-cell-centre-protoss {
+  border-radius: 0.5em;
+  background: #50a050;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;;
+}
+
+.App-leaderboard-data-cell-right-protoss {
+  border-radius: 0.5em;
+  background: #50a050;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: right;
+}
+
+.App-leaderboard-data-cell-left-protoss {
+  border-radius: 0.5em;
+  background: #50a050;
+  text-align: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.App-leaderboard-data-cell-centre-zerg {
+  border-radius: 0.5em;
+  background: #a05050;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;;
+}
+
+.App-leaderboard-data-cell-right-zerg {
+  border-radius: 0.5em;
+  background: #a05050;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: right;
+}
+
+.App-leaderboard-data-cell-left-zerg {
+  border-radius: 0.5em;
+  background: #a05050;
+  text-align: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.App-leaderboard-data-cell-centre-terran {
+  border-radius: 0.5em;
+  background: #5050a0;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;;
+}
+
+.App-leaderboard-data-cell-right-terran {
+  border-radius: 0.5em;
+  background: #5050a0;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: right;
+}
+
+.App-leaderboard-data-cell-left-terran {
+  border-radius: 0.5em;
+  background: #5050a0;
+  text-align: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.App-leaderboard-data-cell-centre-random {
+  border-radius: 0.5em;
+  background: #a0a050;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;;
+}
+
+.App-leaderboard-data-cell-right-random {
+  border-radius: 0.5em;
+  background: #a0a050;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: right;
+}
+
+.App-leaderboard-data-cell-left-random {
+  border-radius: 0.5em;
+  background: #a0a050;
+  text-align: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.App-leaderboard-race-icon {
+  height: 32px;
+  vertical-align: middle;
+}
