@@ -1,6 +1,7 @@
 .App {
   background: radial-gradient(circle farthest-corner at top, #f0f0f0 3%, #c6c6c6 20%, #c6c6c6 80%);
   text-align: center;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -26,8 +27,12 @@
   margin-right: auto;
 }
 
+.App-leaderboard-column-0 {
+  width: 10%;
+}
+
 .App-leaderboard-column-1 {
-  width: 55%;
+  width: 40%;
 }
 
 .App-leaderboard-column-2 {
@@ -98,8 +103,18 @@
   background: #a0a050;
 }
 
+.App-leaderboard-data-cell-tier {
+  background: #32343f;
+}
+
 .App-leaderboard-race-icon {
   height: 1.5em;
   vertical-align: middle;
   filter: invert(100%);
+}
+
+.App-leaderboard-league-emblem {
+  height: 1.5em;
+  vertical-align: middle;
+  filter: brightness(130%);
 }
