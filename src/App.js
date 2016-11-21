@@ -25,20 +25,36 @@ class App extends Component {
     this.refreshLeaderboard();
   }
 
+  renderIcon(race) {
+    {if (race === "Random") {
+      return (
+      <span>
+        <img className="App-leaderboard-race-icon" src="/images/TerranIcon.png" alt="Terran"/>
+        <img className="App-leaderboard-race-icon" src="/images/ZergIcon.png" alt="Zerg"/>
+        <img className="App-leaderboard-race-icon" src="/images/ProtossIcon.png" alt="Protoss"/>
+      </span>
+      );
+    } else {
+      return <img className="App-leaderboard-race-icon" src={`/images/${race}Icon.png`} alt={race}/>
+    }}
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <img className="App-logo"
-            src="http://d1mt9jmphk9kik.cloudfront.net/allinspirationsc2/image1440372391.png"
+            src="/images/allin_official.png"
             alt="All Inspiration"/>
           <h2>Leaderboard</h2>
         </div>
 
         <div className="App-break"/>
 
+        <div className="App-content">
+
           <table className="App-leaderboard">
-            <FlipMove className="App-leaderboard-content" enterAnimation="fade" leaveAnimation="fade">
+
               <col className="App-leaderboard-column-1"/>
               <col className="App-leaderboard-column-2"/>
               <col className="App-leaderboard-column-3"/>
@@ -51,23 +67,27 @@ class App extends Component {
                   <th className="App-leaderboard-header-cell">Percentile</th>
                 </tr>
               </thead>
+              <FlipMove className="App-leaderboard-data-group" enterAnimation="fade" leaveAnimation="fade">
               {
                 this.state.leaderboard_entries.map(({battle_tag, race, mmr, percentile}) => {
                   let lowerCaseRace = race.toLowerCase()
                   let battleTagName = battle_tag.split("#", 2)[0]
 
                    return <tr className="App-leaderboard-data-row" key={battle_tag + race}>
-                     <td className={`App-leaderboard-data-cell-left-${lowerCaseRace}`}>{battleTagName}</td>
-                     <td className={`App-leaderboard-data-cell-centre-${lowerCaseRace}`}>
-                       <img className="App-leaderboard-race-icon" src={`/images/${race}Icon.png`} alt={race}/>
+                     <td className={`App-leaderboard-data-cell App-leaderboard-left-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{battleTagName}</td>
+                     <td className={`App-leaderboard-data-cell App-leaderboard-centre-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
+                        {this.renderIcon(race)}
                      </td>
-                     <td className={`App-leaderboard-data-cell-right-${lowerCaseRace}`}>{mmr}</td>
-                     <td className={`App-leaderboard-data-cell-right-${lowerCaseRace}`}>{percentile}</td>
+                     <td className={`App-leaderboard-data-cell App-leaderboard-right-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{mmr}</td>
+                     <td className={`App-leaderboard-data-cell App-leaderboard-right-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{percentile}</td>
                   </tr>
                 })
               }
             </FlipMove>
           </table>
+
+        </div>
+
       </div>
     );
   }

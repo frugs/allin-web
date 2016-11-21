@@ -1,39 +1,33 @@
 .App {
+  background: radial-gradient(circle farthest-corner at top, #f0f0f0 3%, #c6c6c6 20%, #c6c6c6 80%);
   text-align: center;
 }
 
 .App-logo {
-  height: 80px;
+  height: 10em;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  height: 15em;
   padding: 20px;
-  color: white;
+  color: black;
 }
 
-.App-break {
-  height: 50px;
-}
+.App-break {}
+
+.App-content {}
 
 .App-leaderboard {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
+  width: 65%;
+  color: #fff;
   padding: 1em;
   line-height: 2em;
-  color: #fff;
-}
-
-.App-leaderboard {
   margin-left: auto;
   margin-right: auto;
 }
 
 .App-leaderboard-column-1 {
-  width: 65%;
+  width: 55%;
 }
 
 .App-leaderboard-column-2 {
@@ -50,121 +44,62 @@
 
 .App-leaderboard-header-row {
   text-align: center;
-  height: 2.2em;
 }
 
 .App-leaderboard-header-cell {
   border-radius: 0.5em;
   background: #32343f;
+  height: 2.2em;
+}
+
+.App-leaderboard-data-group {
+  display: table-row-group;
 }
 
 .App-leaderboard-data-row {
-  height: 2em;
+  display: table-row;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 
 .App-leaderboard-data-cell {
+  vertical-align: middle;
+  height: 2em;
   border-radius: 0.5em;
-  margin-top: auto;
-  margin-bottom: auto;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
-.App-leaderboard-data-cell-centre-protoss {
-  border-radius: 0.5em;
+.App-leaderboard-centre-aligned-cell {
+  text-align: center;
+}
+
+.App-leaderboard-right-aligned-cell {
+  text-align: right;
+}
+
+.App-leaderboard-left-aligned-cell {
+  text-align: left;
+}
+
+.App-leaderboard-data-cell-protoss {
   background: #50a050;
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: center;;
 }
 
-.App-leaderboard-data-cell-right-protoss {
-  border-radius: 0.5em;
-  background: #50a050;
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: right;
-}
-
-.App-leaderboard-data-cell-left-protoss {
-  border-radius: 0.5em;
-  background: #50a050;
-  text-align: left;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-.App-leaderboard-data-cell-centre-zerg {
-  border-radius: 0.5em;
+.App-leaderboard-data-cell-zerg {
   background: #a05050;
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: center;;
 }
 
-.App-leaderboard-data-cell-right-zerg {
-  border-radius: 0.5em;
-  background: #a05050;
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: right;
-}
-
-.App-leaderboard-data-cell-left-zerg {
-  border-radius: 0.5em;
-  background: #a05050;
-  text-align: left;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-.App-leaderboard-data-cell-centre-terran {
-  border-radius: 0.5em;
+.App-leaderboard-data-cell-terran {
   background: #5050a0;
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: center;;
 }
 
-.App-leaderboard-data-cell-right-terran {
-  border-radius: 0.5em;
-  background: #5050a0;
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: right;
-}
-
-.App-leaderboard-data-cell-left-terran {
-  border-radius: 0.5em;
-  background: #5050a0;
-  text-align: left;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-.App-leaderboard-data-cell-centre-random {
-  border-radius: 0.5em;
+.App-leaderboard-data-cell-random {
   background: #a0a050;
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: center;;
-}
-
-.App-leaderboard-data-cell-right-random {
-  border-radius: 0.5em;
-  background: #a0a050;
-  padding-left: 1em;
-  padding-right: 1em;
-  text-align: right;
-}
-
-.App-leaderboard-data-cell-left-random {
-  border-radius: 0.5em;
-  background: #a0a050;
-  text-align: left;
-  padding-left: 1em;
-  padding-right: 1em;
 }
 
 .App-leaderboard-race-icon {
-  height: 32px;
+  height: 1.5em;
   vertical-align: middle;
+  filter: invert(100%);
 }
