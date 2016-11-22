@@ -47,11 +47,10 @@ class App extends Component {
     let renderBoundary = ({type, tier, mmr}) => {
       let league = getLeague(tier);
       return <tr key={type + `${tier}`}>
-        <td></td>
-        <div className="App-leaderboard-data-break">
+        <td className="App-leaderboard-data-break" colSpan="5">
           <img className="App-leaderboard-league-emblem" src={`/images/${league}.png`} alt={tier}/>
           {league} {3 - tier % 3} - {mmr} MMR
-        </div>
+        </td>
      </tr>
     }
 
