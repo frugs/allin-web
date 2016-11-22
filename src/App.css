@@ -107,6 +107,16 @@
   background: #32343f;
 }
 
+.App-leaderboard-data-break {
+  display: table-cell;
+  width: 100vw;
+  text-align: center;
+  color: black;
+  text-transform: capitalize;
+  vertical-align: middle;
+  height: 5em;
+}
+
 .App-leaderboard-race-icon {
   height: 1.5em;
   vertical-align: middle;
@@ -117,4 +127,6 @@
   height: 1.5em;
   vertical-align: middle;
   filter: brightness(130%);
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }

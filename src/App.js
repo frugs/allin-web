@@ -25,35 +25,73 @@ class App extends Component {
     this.refreshLeaderboard();
   }
 
-  renderIcon(race) {
-    if (race === "Random") {
-      return (
-      <span>
-        <img className="App-leaderboard-race-icon" src="/images/TerranIcon.png" alt="Terran"/>
-        <img className="App-leaderboard-race-icon" src="/images/ZergIcon.png" alt="Zerg"/>
-        <img className="App-leaderboard-race-icon" src="/images/ProtossIcon.png" alt="Protoss"/>
-      </span>
-      );
-    } else {
-      return <img className="App-leaderboard-race-icon" src={`/images/${race}Icon.png`} alt={race}/>
+  renderEntry(entry) {
+    let getLeague = (tier) => {
+      if ([0, 1, 2].indexOf(tier) !== -1) {
+        return "bronze";
+      } else if ([3, 4, 5].indexOf(tier) !== -1) {
+        return "silver";
+      } else if ([6, 7, 8].indexOf(tier) !== -1) {
+        return "gold";
+      } else if ([9, 10, 11].indexOf(tier) !== -1) {
+        return "platinum";
+      } else if ([12, 13, 14].indexOf(tier) !== -1) {
+        return "diamond";
+      } else if ([15, 16, 17].indexOf(tier) !== -1) {
+        return "master";
+      } else {
+        return "grandmaster";
+      }
     }
-  }
 
-  getLeague(tier) {
-    if ([0, 1, 2].indexOf(tier) !== -1) {
-      return "bronze";
-    } else if ([3, 4, 5].indexOf(tier) !== -1) {
-      return "silver";
-    } else if ([6, 7, 8].indexOf(tier) !== -1) {
-      return "gold";
-    } else if ([9, 10, 11].indexOf(tier) !== -1) {
-      return "platinum";
-    } else if ([12, 13, 14].indexOf(tier) !== -1) {
-      return "diamond";
-    } else if ([15, 16, 17].indexOf(tier) !== -1) {
-      return "master";
+    let renderBoundary = ({type, tier, mmr}) => {
+      let league = getLeague(tier);
+      return <tr key={type + `${tier}`}>
+        <td></td>
+        <div className="App-leaderboard-data-break">
+          <img className="App-leaderboard-league-emblem" src={`/images/${league}.png`} alt={tier}/>
+          {league} {3 - tier % 3} - {mmr} MMR
+        </div>
+     </tr>
+    }
+
+    let renderIcon = (race) => {
+      if (race === "Random") {
+        return (
+        <span>
+          <img className="App-leaderboard-race-icon" src="/images/TerranIcon.png" alt="Terran"/>
+          <img className="App-leaderboard-race-icon" src="/images/ZergIcon.png" alt="Zerg"/>
+          <img className="App-leaderboard-race-icon" src="/images/ProtossIcon.png" alt="Protoss"/>
+        </span>
+        );
+      } else {
+        return <img className="App-leaderboard-race-icon" src={`/images/${race}Icon.png`} alt={race}/>
+      }
+    }
+
+    let renderPlayer = ({type, battle_tag, race, tier, mmr, percentile}) => {
+      let lowerCaseRace = race.toLowerCase()
+      let battleTagName = battle_tag.split("#", 2)[0]
+
+       return <tr className="App-leaderboard-data-row" key={battle_tag + race}>
+         <td className={`App-leaderboard-data-cell App-leaderboard-middle-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
+           <img className="App-leaderboard-league-emblem" src={`/images/${getLeague(tier)}.png`} alt={tier}/>
+         </td>
+         <td className={`App-leaderboard-data-cell App-leaderboard-left-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{battleTagName}</td>
+         <td className={`App-leaderboard-data-cell App-leaderboard-centre-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
+            {renderIcon(race)}
+         </td>
+         <td className={`App-leaderboard-data-cell App-leaderboard-right-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{mmr}</td>
+         <td className={`App-leaderboard-data-cell App-leaderboard-centre-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{percentile}</td>
+      </tr>
+    }
+
+    if (entry.type === "player") {
+      return renderPlayer(entry);
+    } else if (entry.type === "boundary") {
+      return renderBoundary(entry);
     } else {
-      return "grandmaster";
+      return "";
     }
   }
 
@@ -72,39 +110,24 @@ class App extends Component {
         <div className="App-content">
 
           <table className="App-leaderboard">
+            <colgroup>
               <col className="App-leaderboard-column-0"/>
               <col className="App-leaderboard-column-1"/>
               <col className="App-leaderboard-column-2"/>
               <col className="App-leaderboard-column-3"/>
               <col className="App-leaderboard-column-4"/>
-              <thead>
-                <tr className="App-leaderboard-header-row">
-                  <th className="App-leaderboard-header-cell">League</th>
-                  <th className="App-leaderboard-header-cell">BattleTag</th>
-                  <th className="App-leaderboard-header-cell">Race</th>
-                  <th className="App-leaderboard-header-cell">MMR</th>
-                  <th className="App-leaderboard-header-cell">Percentile</th>
-                </tr>
-              </thead>
-              <FlipMove className="App-leaderboard-data-group" enterAnimation="elevator" leaveAnimation="elevator">
-              {
-                this.state.leaderboard_entries.map(({battle_tag, race, tier, mmr, percentile}) => {
-                  let lowerCaseRace = race.toLowerCase()
-                  let battleTagName = battle_tag.split("#", 2)[0]
-
-                   return <tr className="App-leaderboard-data-row" key={battle_tag + race}>
-                     <td className={`App-leaderboard-data-cell App-leaderboard-middle-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
-                       <img className="App-leaderboard-league-emblem" src={`/images/${this.getLeague(tier)}.png`} alt={tier}/>
-                     </td>
-                     <td className={`App-leaderboard-data-cell App-leaderboard-left-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{battleTagName}</td>
-                     <td className={`App-leaderboard-data-cell App-leaderboard-centre-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
-                        {this.renderIcon(race)}
-                     </td>
-                     <td className={`App-leaderboard-data-cell App-leaderboard-right-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{mmr}</td>
-                     <td className={`App-leaderboard-data-cell App-leaderboard-centre-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{percentile}</td>
-                  </tr>
-                })
-              }
+            </colgroup>
+            <thead>
+              <tr className="App-leaderboard-header-row">
+                <th className="App-leaderboard-header-cell">League</th>
+                <th className="App-leaderboard-header-cell">BattleTag</th>
+                <th className="App-leaderboard-header-cell">Race</th>
+                <th className="App-leaderboard-header-cell">MMR</th>
+                <th className="App-leaderboard-header-cell">Percentile</th>
+              </tr>
+            </thead>
+            <FlipMove className="App-leaderboard-data-group" enterAnimation="elevator" leaveAnimation="elevator">
+              {this.state.leaderboard_entries.map(this.renderEntry)}
             </FlipMove>
           </table>
 
