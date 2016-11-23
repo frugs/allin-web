@@ -2,6 +2,7 @@
   background: radial-gradient(circle farthest-corner at top, #f0f0f0 3%, #c6c6c6 20%, #c6c6c6 80%);
   text-align: center;
   min-height: 100vh;
+  display: inline-block;
 }
 
 .App-logo {
