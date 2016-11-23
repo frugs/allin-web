@@ -10,46 +10,55 @@ class App extends Component {
 
   refreshLeaderboard() {
     fetch("/leaderboard_data/").then((response) => {
-      return response.json();
+      return response.json()
     }).then((json) => {
       console.log("refreshing leaderboard")
       this.setState({leaderboard_entries: json.data})
-    });
+    })
   }
 
   componentDidMount() {
     setInterval(() => {
-      this.refreshLeaderboard();
-    }, 50000);
+      this.refreshLeaderboard()
+    }, 50000)
 
-    this.refreshLeaderboard();
+    this.refreshLeaderboard()
   }
 
   renderEntry(entry) {
     let getLeague = (tier) => {
       if ([0, 1, 2].indexOf(tier) !== -1) {
-        return "bronze";
+        return "bronze"
       } else if ([3, 4, 5].indexOf(tier) !== -1) {
-        return "silver";
+        return "silver"
       } else if ([6, 7, 8].indexOf(tier) !== -1) {
-        return "gold";
+        return "gold"
       } else if ([9, 10, 11].indexOf(tier) !== -1) {
         return "platinum";
       } else if ([12, 13, 14].indexOf(tier) !== -1) {
         return "diamond";
       } else if ([15, 16, 17].indexOf(tier) !== -1) {
-        return "master";
+        return "master"
       } else {
-        return "grandmaster";
+        return "grandmaster"
       }
     }
 
-    let renderBoundary = ({type, tier, mmr}) => {
-      let league = getLeague(tier);
+    let renderBoundary = ({type, tier, min_mmr, max_mmr}) => {
+      let league = getLeague(tier)
+      let tierNumber = 3 - tier % 3
+
+      var boundaryDescription;
+      if (tier === 17) {
+        boundaryDescription = `${min_mmr} MMR or above`
+      } else {
+        boundaryDescription = `${min_mmr} MMR to ${max_mmr} MMR`
+      }
+
       return <tr key={type + `${tier}`}>
         <td className="App-leaderboard-data-break" colSpan="5">
           <img className="App-leaderboard-league-emblem" src={`/images/${league}.png`} alt={tier}/>
-          {league} {3 - tier % 3} - {mmr} MMR
+            <span className="App-leaderboard-league-name">{league}</span> {tierNumber} - {boundaryDescription}
         </td>
      </tr>
     }
@@ -62,7 +71,7 @@ class App extends Component {
           <img className="App-leaderboard-race-icon" src="/images/ZergIcon.png" alt="Zerg"/>
           <img className="App-leaderboard-race-icon" src="/images/ProtossIcon.png" alt="Protoss"/>
         </span>
-        );
+        )
       } else {
         return <img className="App-leaderboard-race-icon" src={`/images/${race}Icon.png`} alt={race}/>
       }
@@ -90,7 +99,7 @@ class App extends Component {
     } else if (entry.type === "boundary") {
       return renderBoundary(entry);
     } else {
-      return "";
+      return ""
     }
   }
 
@@ -133,7 +142,7 @@ class App extends Component {
         </div>
 
       </div>
-    );
+    )
   }
 }
 
