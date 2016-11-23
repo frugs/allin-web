@@ -1,8 +1,9 @@
 .App {
-  background: radial-gradient(circle farthest-corner at top, #f0f0f0 3%, #c6c6c6 20%, #c6c6c6 80%);
+  background: radial-gradient(circle farthest-corner at top, #f0f0f0 5em, #c6c6c6 60em);
   text-align: center;
   min-height: 100vh;
   display: inline-block;
+  min-width: 100vw;
 }
 
 .App-logo {
@@ -21,6 +22,7 @@
 
 .App-leaderboard {
   width: 65%;
+  min-width: 32em;
   color: #fff;
   padding: 1em;
   line-height: 2em;
