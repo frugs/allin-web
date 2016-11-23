@@ -52,7 +52,7 @@ class App extends Component {
       if (tier === 17) {
         boundaryDescription = `${min_mmr} MMR or above`
       } else {
-        boundaryDescription = `${min_mmr} MMR to ${max_mmr} MMR`
+        boundaryDescription = `Up to ${max_mmr} MMR`
       }
 
       return <tr key={type + `${tier}`}>
