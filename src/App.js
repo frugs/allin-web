@@ -77,15 +77,14 @@ class App extends Component {
       }
     }
 
-    let renderPlayer = ({type, battle_tag, race, tier, mmr, percentile}) => {
+    let renderPlayer = ({type, name, race, tier, mmr, percentile}) => {
       let lowerCaseRace = race.toLowerCase()
-      let battleTagName = battle_tag.split("#", 2)[0]
 
-       return <tr className="App-leaderboard-data-row" key={battle_tag + race}>
+       return <tr className="App-leaderboard-data-row" key={name + race}>
          <td className={`App-leaderboard-data-cell App-leaderboard-middle-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
            <img className="App-leaderboard-league-emblem" src={`/images/${getLeague(tier)}.png`} alt={tier}/>
          </td>
-         <td className={`App-leaderboard-data-cell App-leaderboard-left-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{battleTagName}</td>
+         <td className={`App-leaderboard-data-cell App-leaderboard-left-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{name}</td>
          <td className={`App-leaderboard-data-cell App-leaderboard-centre-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
             {renderIcon(race)}
          </td>
@@ -128,7 +127,7 @@ class App extends Component {
             <thead>
               <tr className="App-leaderboard-header-row">
                 <th className="App-leaderboard-header-cell">League</th>
-                <th className="App-leaderboard-header-cell">BattleTag</th>
+                <th className="App-leaderboard-header-cell">Name</th>
                 <th className="App-leaderboard-header-cell">Race</th>
                 <th className="App-leaderboard-header-cell">MMR</th>
                 <th className="App-leaderboard-header-cell">Percentile</th>
