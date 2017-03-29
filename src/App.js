@@ -46,19 +46,19 @@ class App extends Component {
 
     let renderBoundary = ({type, tier, min_mmr, max_mmr}) => {
       let league = getLeague(tier)
-      let tierNumber = 3 - tier % 3
 
       var boundaryDescription;
-      if (tier === 17) {
-        boundaryDescription = `${min_mmr} MMR or above`
+      if (tier === 18) {
+        boundaryDescription = ``
       } else {
-        boundaryDescription = `Up to ${max_mmr} MMR`
+        let tierNumber = 3 - tier % 3
+        boundaryDescription = `${tierNumber} - Up to ${max_mmr} MMR`
       }
 
       return <tr key={type + `${tier}`}>
         <td className="App-leaderboard-data-break" colSpan="5">
           <img className="App-leaderboard-league-emblem" src={`/images/${league}.png`} alt={tier}/>
-            <span className="App-leaderboard-league-name">{league}</span> {tierNumber} - {boundaryDescription}
+            <span className="App-leaderboard-league-name">{league}</span> {boundaryDescription}
         </td>
      </tr>
     }
