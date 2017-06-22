@@ -130,7 +130,7 @@ class App extends Component {
                 <th className="App-leaderboard-header-cell">Name</th>
                 <th className="App-leaderboard-header-cell">Race</th>
                 <th className="App-leaderboard-header-cell">MMR</th>
-                <th className="App-leaderboard-header-cell">Percentile</th>
+                <th className="App-leaderboard-header-cell">Top Percentile</th>
               </tr>
             </thead>
             <FlipMove className="App-leaderboard-data-group" enterAnimation="elevator" leaveAnimation="elevator">
