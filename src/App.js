@@ -57,7 +57,7 @@ class App extends Component {
 
       return <tr key={type + `${tier}`}>
         <td className="App-leaderboard-data-break" colSpan="5">
-          <img className="App-leaderboard-league-emblem" src={`/images/${league}.png`} alt={tier}/>
+          <img className="App-leaderboard-league-emblem" src={`images/${league}.png`} alt={tier}/>
             <span className="App-leaderboard-league-name">{league}</span> {boundaryDescription}
         </td>
      </tr>
@@ -67,13 +67,13 @@ class App extends Component {
       if (race === "Random") {
         return (
         <span>
-          <img className="App-leaderboard-race-icon" src="/images/TerranIcon.png" alt="Terran"/>
-          <img className="App-leaderboard-race-icon" src="/images/ZergIcon.png" alt="Zerg"/>
-          <img className="App-leaderboard-race-icon" src="/images/ProtossIcon.png" alt="Protoss"/>
+          <img className="App-leaderboard-race-icon" src="images/TerranIcon.png" alt="Terran"/>
+          <img className="App-leaderboard-race-icon" src="images/ZergIcon.png" alt="Zerg"/>
+          <img className="App-leaderboard-race-icon" src="images/ProtossIcon.png" alt="Protoss"/>
         </span>
         )
       } else {
-        return <img className="App-leaderboard-race-icon" src={`/images/${race}Icon.png`} alt={race}/>
+        return <img className="App-leaderboard-race-icon" src={`images/${race}Icon.png`} alt={race}/>
       }
     }
 
@@ -82,7 +82,7 @@ class App extends Component {
 
        return <tr className="App-leaderboard-data-row" key={name + race}>
          <td className={`App-leaderboard-data-cell App-leaderboard-middle-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
-           <img className="App-leaderboard-league-emblem" src={`/images/${getLeague(tier)}.png`} alt={tier}/>
+           <img className="App-leaderboard-league-emblem" src={`images/${getLeague(tier)}.png`} alt={tier}/>
          </td>
          <td className={`App-leaderboard-data-cell App-leaderboard-left-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{name}</td>
          <td className={`App-leaderboard-data-cell App-leaderboard-centre-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
@@ -107,7 +107,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img className="App-logo"
-            src="/images/allin_official.png"
+            src="images/allin_official.png"
             alt="All Inspiration"/>
           <h2>Leaderboard</h2>
         </div>
