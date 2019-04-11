@@ -1,6 +1,6 @@
-mport setuptools
+import setuptools
 
-VERSION = "0.0.4"
+VERSION = "0.0.5"
 
 setuptools.setup(
     name="leaderboardweb",
