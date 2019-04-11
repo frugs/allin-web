@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   renderEntry(entry) {
-    let getLeague = (tier) => {
+    let getLeagueNameForTier = (tier) => {
       if ([0, 1, 2].indexOf(tier) !== -1) {
         return "bronze"
       } else if ([3, 4, 5].indexOf(tier) !== -1) {
@@ -44,8 +44,25 @@ class App extends Component {
       }
     }
 
+    let getLeagueNameForLeague = (league) => {
+      let leagueNames = [
+        "bronze",
+        "silver",
+        "gold",
+        "platinum",
+        "diamond",
+        "master",
+        "grandmaster"];
+
+      if (0 <= league && league < leagueNames.length) {
+        return leagueNames[league];
+      }
+
+      return "grandmaster";
+    }
+
     let renderBoundary = ({type, tier, min_mmr, max_mmr}) => {
-      let league = getLeague(tier)
+      let league = getLeagueNameForTier(tier)
 
       var boundaryDescription;
       if (tier === 18) {
@@ -77,12 +94,12 @@ class App extends Component {
       }
     }
 
-    let renderPlayer = ({type, name, race, tier, mmr, percentile}) => {
+    let renderPlayer = ({type, name, league, mmr, percentile, race}) => {
       let lowerCaseRace = race.toLowerCase()
 
        return <tr className="App-leaderboard-data-row" key={name + race}>
          <td className={`App-leaderboard-data-cell App-leaderboard-middle-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
-           <img className="App-leaderboard-league-emblem" src={`images/${getLeague(tier)}.png`} alt={tier}/>
+           <img className="App-leaderboard-league-emblem" src={`images/${getLeagueNameForLeague(league)}.png`} alt={league}/>
          </td>
          <td className={`App-leaderboard-data-cell App-leaderboard-left-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>{name}</td>
          <td className={`App-leaderboard-data-cell App-leaderboard-centre-aligned-cell App-leaderboard-data-cell-${lowerCaseRace}`}>
