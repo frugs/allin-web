@@ -81,17 +81,7 @@ class App extends Component {
     }
 
     let renderIcon = (race) => {
-      if (race === "Random") {
-        return (
-        <span>
-          <img className="App-leaderboard-race-icon" src="images/TerranIcon.png" alt="Terran"/>
-          <img className="App-leaderboard-race-icon" src="images/ZergIcon.png" alt="Zerg"/>
-          <img className="App-leaderboard-race-icon" src="images/ProtossIcon.png" alt="Protoss"/>
-        </span>
-        )
-      } else {
-        return <img className="App-leaderboard-race-icon" src={`images/${race}Icon.png`} alt={race}/>
-      }
+      return <img className="App-leaderboard-race-icon" src={`images/${race}Icon.png`} alt={race}/>
     }
 
     let renderPlayer = ({type, name, league, mmr, percentile, race}) => {
